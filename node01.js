@@ -49,6 +49,7 @@ const [number,obj, ,bool] = array;
 
 //---------rest 문법--------------
 // = spread 
+//rest 는 배열 형식이다.
 
 const array2 = ['nodejs', {}, 10, true];
 const [node, obj, ...bool] = array2;
@@ -70,3 +71,10 @@ o(1,2,3,4,5);
 const o1 = (...rest) => console.log(rest);
 
 o1(3,4,5,6,'test');
+
+
+//---------참조 변수-------------
+const x = { a : 1, b : 'text' };
+// x의 참조(할당)된 위치는 변경이 불가능,
+// x안의 값 a, b는 변경이 가능
+// 참조한 껍데기{}는 변경이 불가능하다.

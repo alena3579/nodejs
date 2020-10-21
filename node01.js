@@ -1,4 +1,9 @@
+
+
+
+
 //--------비구조화 할당------------
+// = 구조분해 할당
 
 const candyMachine = {
 	status: {
@@ -15,6 +20,8 @@ const candyMachine = {
 // const getCandy = candyMachine.getCandy;
 
 // ==> 줄이면?
+// candyMachine객체에서 status, getCandy 속성을 꺼내옴
+// 속성 많이 꺼내올수록 효율 좋음
 
 const { status, getCandy } = candyMachine;
 
@@ -26,16 +33,40 @@ console.log(getCandy());
 
 console.log(getCandy.call(candyMachine));
 
+//배열도 비구조화 할당이 가능!
+let array = [ 1, {}, '복숭아', true ];
+const number= array[0];
+const obj= array[1];
+const bool= array[array.length -1];
+//  ==> 이렇게 
+const [number,obj, ,bool] = array;
+
+// 객체는 {}
+// 배열은 []
 
 
 
-//---------rest문법--------------
 
-const array = ['nodejs', {}, 10, true];
-const [node, obj, ...bool] = array;
+//---------rest 문법--------------
+// = spread 
+
+const array2 = ['nodejs', {}, 10, true];
+const [node, obj, ...bool] = array2;
 
 // 이렇게 하면 bool에 10, true 배열로 담김
-// ==>응용
 
+// ==>응용
 const p = (x, ...y) => console.log(x, y);
 console.log(p(1,2,3,4,5));
+
+//이전 자바스크립트 arguments
+function o(){
+	console.log(arguments);
+}
+
+o(1,2,3,4,5);
+
+// ==>
+const o1 = (...rest) => console.log(rest);
+
+o1(3,4,5,6,'test');

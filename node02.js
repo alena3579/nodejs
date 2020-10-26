@@ -220,7 +220,60 @@ promiseLast.then((z) => {
 //데이터를 가져오는 부분과 사용하는 부분이 다른 것
 
 
-// Async/Await
+// =========Async/Await===========
+// 기본 구조
+async() => {
+	const 변수 = await 값
+}
+
+//기존의 Promise
+User.findOne('zero')
+	.then((user) => {
+		console.log(user);
+		return Users.update('zero', 'nero');
+	})
+	.then((updatedUser) => {
+		console.log(updatedUser);
+		return User.remove('nero');
+	})
+	.then((removedUser) => {
+		console.log(removedUser);
+	})
+	.catch((err) => {
+		console.error(error);
+	})
+console.log('다 찾았니?');
+
+// ↓ async/await 로 변형
+
+async func() => {
+	const user = await Users.findOne('zero');
+	const updatedUser = await Users.update('zero','nero');
+	const removedUser = await Users.remove('nero');
+	console.log('다 찾았니?');
+}
+
+// promise 는 다 찾았니를 위에 함수 보다 먼저 실행함
+// async는 콘솔 로그 위치를 자유롭게 조정할 수 있음
+// 코드 깔끔, 간단, 보기도 편함
+// 에러 잡는 부분은 try ~ catch로
+
+async func11() => { //func11는 함수이름
+	try{
+		const user = await Users.findOne('zero');
+		const updatedUser = await Users.update('zero','nero');
+		const removedUser = await Users.remove('nero');
+	}catch(err){    // promise의 catch 와 비슷
+		console.error(err);
+	}
+	console.log('다 찾았니?');
+}
+
+// 어떤 실행문에서 에러 났는지는 찾을 수 없음
+// 굳이 알고 싶으면 -> findOne, update, remove 등 실행문 마다 try - catch
+// 달아서 확인 해야 함
+// promise든 async든 보기에 좋은 편은 아님
+
 
 
 

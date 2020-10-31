@@ -8,6 +8,9 @@ module.exports = {
     odd: odd,
     even: even,
 };
+// export하는 방법 2
+// export.odd = odd; 
+// export.even = even; 
 
 // ↓ ES2015
 module.exports = { odd, even };
